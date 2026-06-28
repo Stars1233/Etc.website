@@ -30,9 +30,11 @@ Both releases include a fix for [websocket authentication with bearer-prefixed a
 
 ## New `write-only-skip-check` option for `--v2-deprecation`
 
-To help operators finish migrating off of the long-deprecated v2 storage, both releases add a new [`write-only-skip-check` option for `--v2-deprecation`](https://github.com/etcd-io/etcd/pull/21850) that bypasses the v2 content check during startup.  This is useful for clusters that have already migrated their data but still carry residual v2 records.
+Both releases add a new `write-only-skip-check` value for the [`--v2-deprecation`](https://github.com/etcd-io/etcd/pull/21850) flag.  It behaves like `write-only`, but skips the startup check that would otherwise prevent etcd from starting when the v2 store contains custom (non-membership) data.
 
-In addition, v3.5.32 [enhances `etcdutl check v2store`](https://github.com/etcd-io/etcd/pull/21889) to check both v2 snapshot and WAL records, giving operators a more complete picture of any remaining v2 data before turning off v2 support entirely.
+This option is intended for operators upgrading etcd from v3.5 to v3.6. Please review the [Upgrade etcd from v3.5 to v3.6](https://etcd.io/docs/v3.6/upgrades/upgrade_3_6/) guide before using it; the option is opt-in and should be used at the operator's own risk.  Note that `write-only-drop-data`, which wipes any remaining v2 data on startup, is planned to become the default in v3.7, so `write-only-skip-check` gives operators a controlled path to handle v2 data on their own timeline before that change lands.
+
+In addition, v3.5.32 [enhances `etcdutl check v2store`](https://github.com/etcd-io/etcd/pull/21889) to inspect both v2 snapshot and WAL records, so operators can audit exactly what v2 data remains before deciding whether to use `write-only-skip-check` or proceed with a full migration.
 
 ## Other improvements in v3.5.32
 
