@@ -18,7 +18,7 @@ As noted in the [June release](https://etcd.io/blog/2026/june-patch-release/), v
 
 ## Patching dependency CVEs
 
-This release updates v3.5 and v3.6 to [golang v1.25.11](https://groups.google.com/g/golang-nuts), and bump `go.opentelemetry.io/otel` and `go.opentelemetry.io/otel/sdk` from `v1.40.0` to `v1.43.0` to address [CVE-2026-29181](https://github.com/advisories) and [CVE-2026-39883](https://github.com/advisories).  v3.6.13 additionally bumps `golang.org/x/crypto` to `v0.52.0` to resolve several CVEs.
+This release updates v3.5 and v3.6 to [golang v1.25.11](https://groups.google.com/g/golang-nuts), and bump `go.opentelemetry.io/otel` and `go.opentelemetry.io/otel/sdk` to `v1.43.0` to address security vulnerabilities in go, including [CVE-2026-29181](https://github.com/advisories/GHSA-mh2q-q3fh-2475) and [CVE-2026-39883](https://github.com/advisories/GHSA-hfvc-g4fc-pqhx). v3.6.13 additionally bumps `golang.org/x/crypto` to `v0.52.0` to resolve several CVEs.
 
 It is unknown how many of these vulnerabilities are exploitable in etcd, but users should plan to apply the patch as soon as convenient regardless.
 
