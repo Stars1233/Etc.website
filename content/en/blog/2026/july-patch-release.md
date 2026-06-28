@@ -1,5 +1,5 @@
 ---
-title: Etcd July Patch Release: v3.5.32 and v3.6.13
+title: "Etcd July Patch Releases: v3.5.32 and v3.6.13"
 author:  "SIG-Etcd Leads"
 date: 2026-07-01
 draft: false
